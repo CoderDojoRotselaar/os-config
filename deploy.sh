@@ -33,7 +33,7 @@ case "$NAME" in
 Fedora)
 	yum -y install puppet git-core
 	;;
-Ubuntu)
+Ubuntu | Endless)
 	apt update
 	apt -y install puppet git-core
 	;;
