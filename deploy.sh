@@ -50,4 +50,4 @@ fi
 cd "${REPOSITORY_ROOT}"
 git pull
 puppet config set codedir "${REPOSITORY_ROOT}"
-puppet apply
+puppet apply "${REPOSITORY_ROOT}/manifests/site.pp"
