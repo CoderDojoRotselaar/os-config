@@ -30,11 +30,11 @@ fi
 set -x
 case "$NAME" in
 Fedora)
-	yum -y install puppet git
+	yum -y install puppet git-core
 	;;
 Ubuntu)
 	apt update
-	apt -y install puppet git
+	apt -y install puppet git-core
 	;;
 *)
 	echo "Unknown/unsupported operating system. Bailing out." >&2
