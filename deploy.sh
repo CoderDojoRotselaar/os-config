@@ -49,5 +49,7 @@ fi
 
 cd "${REPOSITORY_ROOT}"
 git pull
+git submodule init
+git submodule update --remote --merge
 puppet config set codedir "${REPOSITORY_ROOT}"
 puppet apply "${REPOSITORY_ROOT}/manifests/site.pp"
