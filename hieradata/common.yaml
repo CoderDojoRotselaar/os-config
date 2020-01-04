@@ -1,4 +1,4 @@
-packages::auto_update:
+profile::packages::auto_update:
   - git
   - puppet
   - bash
