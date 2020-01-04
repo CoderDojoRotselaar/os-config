@@ -1,4 +1,4 @@
-#!/bin/sh -eu
+#!/bin/sh -euo pipefail
 
 source /etc/os-release
 
