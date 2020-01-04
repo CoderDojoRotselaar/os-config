@@ -9,6 +9,6 @@ REPOSITORY_ROOT=/var/lib/coderdojo-deploy
 
 cd "${REPOSITORY_ROOT}"
 git pull
-git submodule init
-git submodule update --remote --merge
+librarian-puppet install --clean --verbose
+
 puppet apply "${REPOSITORY_ROOT}/manifests/site.pp"

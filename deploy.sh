@@ -43,6 +43,8 @@ Ubuntu | Endless)
 	;;
 esac
 
+gem install --no-ri --no-rdoc librarian-puppet
+
 puppet config set codedir "${REPOSITORY_ROOT}"
 
 if [[ ! -d "${REPOSITORY_ROOT}" ]]; then
