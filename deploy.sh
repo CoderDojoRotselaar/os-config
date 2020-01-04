@@ -1,6 +1,7 @@
 #!/bin/sh -euo pipefail
 
 source /etc/os-release
+REPOSITORY_ROOT=/var/lib/coderdojo-deploy
 
 cat <<EOF
 This script will update this system to a CoderDojo laptop as used in Rotselaar.
@@ -42,9 +43,11 @@ Ubuntu)
 	;;
 esac
 
-if [[ ! -d /var/lib/coderdojo-deploy ]]; then
-	git clone https://github.com/CoderDojoRotselaar/os-config /var/lib/coderdojo-deploy
+if [[ ! -d "${REPOSITORY_ROOT}" ]]; then
+	git clone https://github.com/CoderDojoRotselaar/os-config "${REPOSITORY_ROOT}"
 fi
 
-cd /var/lib/coderdojo-deploy
+cd "${REPOSITORY_ROOT}"
 git pull
+
+puppet apply "${REPOSITORY_ROOT}/manifests/site.pp"
