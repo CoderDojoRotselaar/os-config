@@ -4,3 +4,4 @@ packages::auto_update:
   - bash
   - curl
   - openssl
+  - neovim
