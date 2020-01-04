@@ -43,13 +43,14 @@ Ubuntu | Endless)
 	;;
 esac
 
+puppet config set codedir "${REPOSITORY_ROOT}"
+
 if [[ ! -d "${REPOSITORY_ROOT}" ]]; then
 	git clone https://github.com/CoderDojoRotselaar/os-config "${REPOSITORY_ROOT}"
 fi
 
-cd "${REPOSITORY_ROOT}"
-git pull
-git submodule init
-git submodule update --remote --merge
-puppet config set codedir "${REPOSITORY_ROOT}"
-puppet apply "${REPOSITORY_ROOT}/manifests/site.pp"
+if [[ -e /usr/sbin/puppet-apply ]]; then
+	ln -s "${REPOSITORY_ROOT}/puppet-apply.sh" /usr/sbin/puppet-apply
+fi
+
+/usr/sbin/puppet-apply
