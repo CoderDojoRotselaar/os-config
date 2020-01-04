@@ -1,4 +1,4 @@
 node default {
-  notify { "First notification": }
+  notify { "Running puppet on this system: '${facts['hostname']}', '${facts['os']['name']}'": }
   include ::profile
 }
