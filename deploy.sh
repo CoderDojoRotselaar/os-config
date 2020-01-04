@@ -1,4 +1,6 @@
-#!/bin/bash -euo pipefail
+#!/bin/bash -eu
+
+set -o pipefail
 
 source /etc/os-release
 REPOSITORY_ROOT=/var/lib/coderdojo-deploy
