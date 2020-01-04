@@ -1,0 +1,6 @@
+packages::auto_update:
+  - git
+  - puppet
+  - bash
+  - curl
+  - openssl
