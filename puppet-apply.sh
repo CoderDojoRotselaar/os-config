@@ -1,4 +1,4 @@
-#!/bin/bash -euo pipefail
+#!/bin/bash -eu
 
 REPOSITORY_ROOT=/var/lib/coderdojo-deploy
 
