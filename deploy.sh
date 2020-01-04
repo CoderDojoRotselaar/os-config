@@ -1,5 +1,6 @@
-#!/bin/bash -eu
+#!/bin/bash
 
+set -eu
 set -o pipefail
 
 source /etc/os-release
