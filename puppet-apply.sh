@@ -9,6 +9,6 @@ REPOSITORY_ROOT=/var/lib/coderdojo-deploy
 
 cd "${REPOSITORY_ROOT}"
 git pull
-librarian-puppet install --clean --verbose
+librarian-puppet install --verbose
 
 puppet apply "${REPOSITORY_ROOT}/manifests/site.pp"
