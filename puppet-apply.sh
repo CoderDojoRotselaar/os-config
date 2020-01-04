@@ -1,5 +1,10 @@
 #!/bin/bash -eu
 
+if ! ping -c 1 github.com -q; then
+	echo "No internet or github.com unreachable. Bailing out now."
+	exit 1
+fi
+
 REPOSITORY_ROOT=/var/lib/coderdojo-deploy
 
 cd "${REPOSITORY_ROOT}"
