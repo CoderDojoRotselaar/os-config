@@ -9,23 +9,33 @@ function checkNetwork() {
 }
 
 function updatePuppet() {
+	cd "${REPOSITORY_ROOT}"
 	set -x
 	git pull
 	librarian-puppet update --verbose
+}
+
+function applyPuppet() {
+	cd "${REPOSITORY_ROOT}"
+	set -x
+	puppet apply "${REPOSITORY_ROOT}/manifests/site.pp"
 }
 
 cmd=${1:-update}
 shift
 REPOSITORY_ROOT=/var/lib/coderdojo-deploy
 
-cd "${REPOSITORY_ROOT}"
-
 case "${cmd}" in
 update)
 	checkNetwork
 	updatePuppet
+	applyPuppet
+	;;
+apply)
+	applyPuppet
+	;;
+*)
+	echo "Unknown command. Bailing out now."
+	exit 1
 	;;
 esac
-
-set -x
-puppet apply "${REPOSITORY_ROOT}/manifests/site.pp"
