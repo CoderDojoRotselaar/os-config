@@ -13,6 +13,9 @@ Note: this script will run as root and WILL change your system! It may delete yo
 
 # Supported operating systems
 
-* Linux Lite (<https://www.linuxliteos.com/>)
-* Endless OS (<https://endlessos.com/>)
-* Fedora (<https://fedoraproject.org/>)
+* Debian family:
+  * Ubuntu (<https://www.ubuntu.com/>)
+  * Linux Lite (<https://www.linuxliteos.com/>)
+
+* RedHat family:
+  * Fedora (<https://fedoraproject.org/>)
