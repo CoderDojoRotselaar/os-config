@@ -32,21 +32,28 @@ EOF
 fi
 
 set -x
-case "$NAME" in
-Fedora)
-	yum -y install puppet git-core
-	;;
-Ubuntu | Endless)
-	apt update
-	apt -y install puppet git-core
-	;;
-*)
-	echo "Unknown/unsupported operating system. Bailing out." >&2
-	exit 1
-	;;
-esac
 
-gem install --no-ri --no-rdoc librarian-puppet
+if ! command -v puppet >/dev/null; then
+	echo "Puppet not yet installed - installing now..."
+	case "$NAME" in
+	Fedora)
+		yum -y install puppet git-core
+		;;
+	Ubuntu | Endless)
+		apt update
+		apt -y install puppet git-core
+		;;
+	*)
+		echo "Unknown/unsupported operating system. Bailing out." >&2
+		exit 1
+		;;
+	esac
+fi
+
+if ! command -v librarian-puppet >/dev/null; then
+	echo "Librarian-puppet not yet installed - installing now..."
+	gem install --no-ri --no-rdoc librarian-puppet
+fi
 
 puppet config set codedir "${REPOSITORY_ROOT}"
 
