@@ -18,7 +18,7 @@ function updatePuppet() {
 function applyPuppet() {
 	cd "${REPOSITORY_ROOT}"
 	set -x
-	puppet apply --config="${REPOSITORY_ROOT}/puppet.conf"
+	puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp"
 }
 
 cmd=${1:-update}
