@@ -31,28 +31,37 @@ EOF
 	exit 1
 fi
 
+case "$NAME" in
+Fedora)
+	INSTALL_PRE_COMMAND="yum"
+	INSTALL_PRE_COMMAND_PARAMS="-y clean all"
+	INSTALL_COMMAND=yum
+	INSTALL_PRE_PARAMS="-y install"
+	GEM_INSTALL_PARAMS=""
+	;;
+Ubuntu | Endless)
+	INSTALL_PRE_COMMAND="apt update"
+	INSTALL_COMMAND=apt
+	INSTALL_PRE_PARAMS="-y install"
+	GEM_INSTALL_PARAMS="--no-ri --no-rdoc"
+	;;
+*)
+	echo "Unknown/unsupported operating system. Bailing out." >&2
+	exit 1
+	;;
+esac
+
 set -x
 
 if ! command -v puppet >/dev/null; then
 	echo "Puppet not yet installed - installing now..."
-	case "$NAME" in
-	Fedora)
-		yum -y install puppet git-core
-		;;
-	Ubuntu | Endless)
-		apt update
-		apt -y install puppet git-core
-		;;
-	*)
-		echo "Unknown/unsupported operating system. Bailing out." >&2
-		exit 1
-		;;
-	esac
+	$INSTALL_PRE_COMMAND $INSTALL_PRE_COMMAND_PARAMS
+	$INSTALL_COMMAND $INSTALL_PRE_PARAMS puppet git-core
 fi
 
 if ! command -v librarian-puppet >/dev/null; then
 	echo "Librarian-puppet not yet installed - installing now..."
-	gem install librarian-puppet
+	gem install $GEM_INSTALL_PARAMS librarian-puppet
 fi
 
 puppet config set codedir "${REPOSITORY_ROOT}"
