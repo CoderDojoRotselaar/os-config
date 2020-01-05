@@ -52,7 +52,7 @@ fi
 
 if ! command -v librarian-puppet >/dev/null; then
 	echo "Librarian-puppet not yet installed - installing now..."
-	gem install --no-rdoc librarian-puppet
+	gem install librarian-puppet
 fi
 
 puppet config set codedir "${REPOSITORY_ROOT}"
