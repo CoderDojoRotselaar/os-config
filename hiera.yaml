@@ -8,7 +8,7 @@ hierarchy:
     path: "nodes/%{facts.hostname}.yaml"
 
   - name: "Per-OS defaults"
-    path: "os/%{facts.os.name}.yaml"
+    path: "os/%{facts.os.family}.yaml"
 
   - name: "Common data"
     path: "common.yaml"
