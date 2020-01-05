@@ -22,7 +22,6 @@ function applyPuppet() {
 }
 
 cmd=${1:-update}
-shift
 REPOSITORY_ROOT=/var/lib/coderdojo-deploy
 
 case "${cmd}" in
