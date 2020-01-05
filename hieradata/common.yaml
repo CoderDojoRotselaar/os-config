@@ -6,3 +6,4 @@ profile::packages::auto_update:
   - curl
   - openssl
   - neovim
+  - vim
