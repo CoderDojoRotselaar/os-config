@@ -12,7 +12,8 @@ function updatePuppet() {
 	cd "${REPOSITORY_ROOT}"
 	set -x
 	git pull
-	librarian-puppet update --verbose
+	librarian-puppet update --verbose ||
+		librarian-puppet install --verbose --clean
 }
 
 function applyPuppet() {
