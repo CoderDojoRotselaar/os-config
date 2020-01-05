@@ -64,8 +64,6 @@ if ! command -v librarian-puppet >/dev/null; then
 	gem install $GEM_INSTALL_PARAMS librarian-puppet
 fi
 
-puppet config set codedir "${REPOSITORY_ROOT}"
-
 if [[ ! -d "${REPOSITORY_ROOT}" ]]; then
 	git clone https://github.com/CoderDojoRotselaar/os-config "${REPOSITORY_ROOT}"
 fi
