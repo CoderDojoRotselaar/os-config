@@ -1,0 +1,6 @@
+profile::packages::auto_update:
+  - gnome-shell-extension-dash-to-dock
+  - gnome-shell-extension-pidgin
+  - gnome-shell-extension-suspend-button
+  - gnome-shell-extension-appindicator
+  - gnome-shell-extension-desktop-icons
