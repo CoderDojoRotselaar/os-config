@@ -33,8 +33,7 @@ fi
 
 case "$NAME" in
 Fedora)
-	INSTALL_PRE_COMMAND="yum"
-	INSTALL_PRE_COMMAND_PARAMS="-y clean all"
+	INSTALL_PRE_COMMAND="yum -y clean all"
 	INSTALL_COMMAND=yum
 	INSTALL_PRE_PARAMS="-y install"
 	GEM_INSTALL_PARAMS=""
@@ -55,7 +54,7 @@ set -x
 
 if ! command -v puppet >/dev/null; then
 	echo "Puppet not yet installed - installing now..."
-	$INSTALL_PRE_COMMAND $INSTALL_PRE_COMMAND_PARAMS
+	$INSTALL_PRE_COMMAND
 	$INSTALL_COMMAND $INSTALL_PRE_PARAMS puppet git-core
 fi
 
