@@ -1,0 +1,3 @@
+lookup_options:
+  profile::packages::auto_update:
+    merge: unique

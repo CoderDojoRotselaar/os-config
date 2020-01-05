@@ -12,3 +12,6 @@ hierarchy:
 
   - name: "Common data"
     path: "common.yaml"
+
+  - name: "Lookup options"
+    path: "lookup.yaml"
