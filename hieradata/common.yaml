@@ -7,3 +7,5 @@ profile::packages::auto_update:
   - openssl
   - neovim
   - vim
+
+profile::desktop::background: coderdojo_background_black.png
