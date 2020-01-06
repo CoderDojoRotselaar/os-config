@@ -38,7 +38,7 @@ Fedora)
 	INSTALL_PRE_PARAMS="-y install"
 	GEM_INSTALL_PARAMS=""
 	;;
-Ubuntu | Endless)
+Ubuntu)
 	INSTALL_PRE_COMMAND="apt update"
 	INSTALL_COMMAND=apt
 	INSTALL_PRE_PARAMS="-y install"
