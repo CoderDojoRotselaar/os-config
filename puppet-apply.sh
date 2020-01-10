@@ -1,41 +1,48 @@
 #!/bin/bash
+
+. /etc/profile.d/puppet-agent.sh
+
 set -eu
 
 function checkNetwork() {
-	if ! ping -q -W 1 -i 1 -c 1 github.com; then
-		echo "No internet or github.com unreachable. Bailing out now."
-		exit 1
-	fi
+  if ! ping -q -W 1 -i 1 -c 1 github.com; then
+    echo "No internet or github.com unreachable."
+    return 1
+  fi
+  echo "I could reach repo.icts.kuleuven.be -- all is well!"
 }
 
 function updatePuppet() {
-	cd "${REPOSITORY_ROOT}"
-	set -x
-	git pull
-	librarian-puppet update --verbose ||
-		librarian-puppet install --verbose --clean
+  if checkNetwork; then
+    cd "${REPOSITORY_ROOT}"
+    set -x
+    git pull
+    librarian-puppet update --verbose ||
+      librarian-puppet install --verbose --clean
+  fi
 }
 
 function applyPuppet() {
-	cd "${REPOSITORY_ROOT}"
-	set -x
-	puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp"
+  puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp" "$@"
 }
 
-cmd=${1:-update}
-REPOSITORY_ROOT=/var/lib/coderdojo-deploy
+cmd="update"
+if [[ -n "${1:-}" ]]; then
+  case "$1" in
+  -*)
+    # nothing
+    ;;
+  *)
+    cmd="$1"
+    shift
+    ;;
+  esac
+fi
 
-case "${cmd}" in
-update)
-	checkNetwork
-	updatePuppet
-	applyPuppet
-	;;
-apply)
-	applyPuppet
-	;;
-*)
-	echo "Unknown command. Bailing out now."
-	exit 1
-	;;
-esac
+REPOSITORY_ROOT=/var/lib/puppet-deployment
+
+if [[ "${cmd}" == "update" ]]; then
+  updatePuppet
+fi
+
+applyPuppet "$@"
