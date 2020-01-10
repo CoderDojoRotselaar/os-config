@@ -33,15 +33,23 @@ fi
 
 case "$NAME" in
 Fedora)
-  INSTALL_PRE_COMMAND="true"
-  INSTALL_COMMAND=yum
-  INSTALL_PRE_PARAMS="-y install"
+  if ! command -v puppet >/dev/null; then
+    echo "Puppet not yet installed - installing now..."
+    yum -y install https://yum.puppetlabs.com/puppet-release-fedora-30.noarch.rpm
+    yum -y install puppet-agent git-core
+  fi
   GEM_INSTALL_PARAMS=""
   ;;
 Ubuntu)
-  INSTALL_PRE_COMMAND="apt update"
-  INSTALL_COMMAND=apt
-  INSTALL_PRE_PARAMS="-y install"
+  if ! command -v puppet >/dev/null; then
+    echo "Puppet not yet installed - installing now..."
+    . /etc/lsb-release
+    curl -sSL https://apt.puppetlabs.com/puppet-release-${DISTRIB_CODENAME}.deb >/tmp/puppet-release.deb
+    dpkg -i /tmp/puppet-release.deb
+    rm -f /tmp/puppet-release.deb
+    apt update
+    apt -y install puppet-agent git-core
+  fi
   GEM_INSTALL_PARAMS="--no-ri --no-rdoc"
   ;;
 *)
@@ -49,15 +57,6 @@ Ubuntu)
   exit 1
   ;;
 esac
-
-set -x
-
-if ! command -v puppet >/dev/null; then
-  echo "Puppet not yet installed - installing now..."
-  $INSTALL_PRE_COMMAND
-  $INSTALL_COMMAND $INSTALL_PRE_PARAMS https://yum.puppetlabs.com/puppet-release-fedora-30.noarch.rpm
-  $INSTALL_COMMAND $INSTALL_PRE_PARAMS puppet-agent git-core
-fi
 
 if ! command -v librarian-puppet >/dev/null; then
   echo "Librarian-puppet not yet installed - installing now..."
