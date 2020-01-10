@@ -9,3 +9,4 @@ profile::packages::auto_update:
   - vim
 
 profile::desktop::background: coderdojo_background_black.png
+profile::git::repository: https://github.com/CoderDojoRotselaar/projecten.git'
