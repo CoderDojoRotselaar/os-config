@@ -35,7 +35,9 @@ case "$NAME" in
 Fedora)
   if ! command -v puppet >/dev/null; then
     echo "Puppet not yet installed - installing now..."
-    yum -y install https://yum.puppetlabs.com/puppet-release-fedora-30.noarch.rpm
+    if !rpm -q puppet-release; then
+      yum -y install https://yum.puppetlabs.com/puppet-release-fedora-30.noarch.rpm
+    fi
     yum -y install puppet-agent git-core
   fi
   GEM_INSTALL_PARAMS=""
@@ -43,10 +45,12 @@ Fedora)
 Ubuntu)
   if ! command -v puppet >/dev/null; then
     echo "Puppet not yet installed - installing now..."
-    . /etc/lsb-release
-    curl -sSL https://apt.puppetlabs.com/puppet-release-${DISTRIB_CODENAME}.deb >/tmp/puppet-release.deb
-    dpkg -i /tmp/puppet-release.deb
-    rm -f /tmp/puppet-release.deb
+    if !dpkg -l puppet-release; then
+      . /etc/lsb-release
+      curl -sSL https://apt.puppetlabs.com/puppet-release-${DISTRIB_CODENAME}.deb >/tmp/puppet-release.deb
+      dpkg -i /tmp/puppet-release.deb
+      rm -f /tmp/puppet-release.deb
+    fi
     apt update
     apt -y install puppet-agent git-core
   fi
