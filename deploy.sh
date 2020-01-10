@@ -36,9 +36,12 @@ Fedora)
   if ! command -v puppet >/dev/null; then
     echo "Puppet not yet installed - installing now..."
     if !rpm -q puppet-release; then
-      yum -y install https://yum.puppetlabs.com/puppet-release-fedora-30.noarch.rpm
+      dnf -y install https://yum.puppetlabs.com/puppet-release-fedora-30.noarch.rpm
     fi
-    yum -y install puppet-agent git-core
+    dnf -y install puppet-agent git-core
+  fi
+  if ! command -v ruby >/dev/null; then
+    dnf -y install ruby
   fi
   GEM_INSTALL_PARAMS=""
   ;;
@@ -53,6 +56,9 @@ Ubuntu)
     fi
     apt update
     apt -y install puppet-agent git-core
+  fi
+  if ! command -v ruby >/dev/null; then
+    apt -y install ruby
   fi
   GEM_INSTALL_PARAMS="--no-ri --no-rdoc"
   ;;
