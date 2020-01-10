@@ -56,7 +56,7 @@ if ! command -v puppet >/dev/null; then
   echo "Puppet not yet installed - installing now..."
   $INSTALL_PRE_COMMAND
   $INSTALL_COMMAND $INSTALL_PRE_PARAMS https://yum.puppetlabs.com/puppet-release-fedora-30.noarch.rpm
-  $INSTALL_COMMAND $INSTALL_PRE_PARAMS puppet git-core
+  $INSTALL_COMMAND $INSTALL_PRE_PARAMS puppet-agent git-core
 fi
 
 if ! command -v librarian-puppet >/dev/null; then
