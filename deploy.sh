@@ -4,7 +4,7 @@ set -eu
 set -o pipefail
 
 source /etc/os-release
-REPOSITORY_ROOT=/var/lib/coderdojo-deploy
+REPOSITORY_ROOT=/var/lib/puppet-deployment
 
 cat <<EOF
 This script will update this system to a CoderDojo laptop as used in Rotselaar.
@@ -33,7 +33,7 @@ fi
 
 case "$NAME" in
 Fedora)
-  INSTALL_PRE_COMMAND="yum -y clean all"
+  INSTALL_PRE_COMMAND="true"
   INSTALL_COMMAND=yum
   INSTALL_PRE_PARAMS="-y install"
   GEM_INSTALL_PARAMS=""
@@ -55,6 +55,7 @@ set -x
 if ! command -v puppet >/dev/null; then
   echo "Puppet not yet installed - installing now..."
   $INSTALL_PRE_COMMAND
+  $INSTALL_COMMAND $INSTALL_PRE_PARAMS https://yum.puppetlabs.com/puppet-release-fedora-30.noarch.rpm
   $INSTALL_COMMAND $INSTALL_PRE_PARAMS puppet git-core
 fi
 
