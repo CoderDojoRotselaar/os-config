@@ -1,2 +1,2 @@
 ---
-profile::desktop_environment: lubuntu-desktop
+profile::desktop::environment: lubuntu-desktop
