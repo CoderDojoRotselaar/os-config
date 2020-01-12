@@ -3,7 +3,7 @@
 Run the deploy script in a terminal of a freshly installed system:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/CoderDojoRotselaar/os-config/master/deploy.sh | \
+curl -sSL https://raw.githubusercontent.com/CoderDojoRotselaar/os-config/master/bootstrap/deploy.sh | \
   tee /tmp/deploy.sh && \
   sudo -E bash /tmp/deploy.sh
 ```
@@ -14,16 +14,17 @@ Note: this script will run as root and WILL change your system! It may delete yo
 
 As clean as possible. We need Internet, and either:
 
-* a user 'coderdojo' with uid `1000`
-* no user with uid `1000`
+- a user 'coderdojo' with uid `1000`
+- no user with uid `1000`
 
 The user you run the above command with, should have `sudo` capabilities
 
 # Supported operating systems
 
-* Debian family:
-  * Linux Lite 4.6 (<https://www.linuxliteos.com/>)
-  * Ubuntu 18.04.3 Desktop LTS (<https://www.ubuntu.com/>)
+- Debian family:
 
-* RedHat family:
-  * Fedora Workstation 31 (<https://fedoraproject.org/>)
+  - Linux Lite 4.6 (<https://www.linuxliteos.com/>)
+  - Ubuntu 18.04.3 Desktop LTS (<https://www.ubuntu.com/>)
+
+- RedHat family:
+  - Fedora Workstation 31 (<https://fedoraproject.org/>)
