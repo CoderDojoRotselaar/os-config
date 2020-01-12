@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 # file names & paths
-tmp="/media/data/videos" # destination folder to store the final iso file
+tmp="$(pwd)" # destination folder to store the final iso file
 hostname="coderdojo-clean"
-currentuser="$(whoami)"
 
 # define spinner function for slow tasks
 # courtesy of http://fitnr.com/showing-a-bash-spinner.html
@@ -51,17 +50,10 @@ echo " +---------------------------------------------------+"
 echo
 
 # ask if script runs without sudo or root priveleges
-if [ $currentuser != "root" ]; then
+if [ $UID != 0 ]; then
   echo " you need sudo privileges to run this script, or run it as root"
   exit 1
 fi
-
-#check that we are in ubuntu 16.04+
-
-case "$(lsb_release -rs)" in
-16* | 18*) ub1604="yes" ;;
-*) ub1604="" ;;
-esac
 
 #get the latest versions of Ubuntu LTS
 
@@ -88,8 +80,7 @@ fi
 
 # ask the user questions about his/her preferences
 username=coderdojo
-pwhash='$6$XTj1xyhI$Ku8xdtmejyS0h/1wBIcLt8LBPoV2n7UBzKM7cCrQyd3CEyd.NeRrldfL05SHaQVGkgSopvDVt8fRX/6mbzuPL/'
-bootable=yes
+pwhash='x'
 source unattended-parameters.env # override params here
 
 # download the ubuntu iso. If it already exists, do not delete in the end.
@@ -114,27 +105,6 @@ if [[ ! -f $tmp/$seed_file ]]; then
   download "https://raw.githubusercontent.com/CoderDojoRotselaar/os-config/master/bootstrap/$seed_file"
 fi
 
-# install required packages
-echo " installing required packages"
-if [ $(program_is_installed "mkpasswd") -eq 0 ] || [ $(program_is_installed "mkisofs") -eq 0 ]; then
-  (apt-get -y update >/dev/null 2>&1) &
-  spinner $!
-  (apt-get -y install whois genisoimage >/dev/null 2>&1) &
-  spinner $!
-fi
-if [[ $bootable == "yes" ]] || [[ $bootable == "y" ]]; then
-  if [ $(program_is_installed "isohybrid") -eq 0 ]; then
-    #16.04
-    if [[ $ub1604 == "yes" || $(lsb_release -cs) == "artful" ]]; then
-      (apt-get -y install syslinux syslinux-utils >/dev/null 2>&1) &
-      spinner $!
-    else
-      (apt-get -y install syslinux >/dev/null 2>&1) &
-      spinner $!
-    fi
-  fi
-fi
-
 # create working folders
 echo " remastering your iso file"
 mkdir -p $tmp
@@ -156,12 +126,6 @@ spinner $!
 cd $tmp/iso_new
 #doesn't work for 16.04
 echo en >$tmp/iso_new/isolinux/lang
-
-#16.04
-#taken from https://github.com/fries/prepare-ubuntu-unattended-install-iso/blob/master/make.sh
-sed -i -r 's/timeout\s+[0-9]+/timeout 1/g' $tmp/iso_new/isolinux/isolinux.cfg
-
-# set late command
 
 # copy the coderdojo seed file to the iso
 cp -rT $tmp/$seed_file $tmp/iso_new/preseed/$seed_file
@@ -204,9 +168,7 @@ cd $tmp/iso_new
 spinner $!
 
 # make iso bootable (for dd'ing to  USB stick)
-if [[ $bootable == "yes" ]] || [[ $bootable == "y" ]]; then
-  isohybrid $tmp/$new_iso_name
-fi
+isohybrid $tmp/$new_iso_name
 
 # cleanup
 umount $tmp/iso_org
