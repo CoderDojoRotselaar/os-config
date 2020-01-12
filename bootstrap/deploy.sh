@@ -18,10 +18,11 @@ This script will:
 * apply that configuration to this system
 * periodically update the git repository and apply
 
-Press enter to continue the deployment.
+Wait 10 seconds to continue the deployment.
 Press ctrl+c to abort now.
 EOF
-read
+
+sleep 10
 
 if [[ "$USER" != "root" ]]; then
   cat <<EOF
