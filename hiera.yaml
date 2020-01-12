@@ -1,11 +1,11 @@
 version: 5
 defaults:
-  datadir: hieradata
+  datadir: data
   data_hash: yaml_data
 
 hierarchy:
-  - name: "Per-node data"
-    path: "nodes/%{facts.hostname}.yaml"
+  - name: "Per-UUID data (for clean installations)"
+    path: "uuid/%{facts.dmi.product.uui}.yaml"
 
   - name: "Per-OS defaults"
     path: "os/%{facts.os.name}.yaml"
