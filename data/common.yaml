@@ -10,3 +10,5 @@ profile::packages::auto_update:
 
 profile::desktop::background: coderdojo_background_black.png
 profile::git::repository: https://github.com/CoderDojoRotselaar/projecten.git
+profile::locale::lang: nl_BE.UTF-8
+profile::keyboard::layout: be
