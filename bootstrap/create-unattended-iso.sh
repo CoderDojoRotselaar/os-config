@@ -81,7 +81,11 @@ fi
 # ask the user questions about his/her preferences
 username=coderdojo
 pwhash='x'
-source unattended-parameters.env # override params here
+[[ -f unattended-parameters.env ]] && source unattended-parameters.env # override params here
+
+if [[ "${pwhash}" == "x" ]]; then
+  echo "No default password set in 'unattended-parameters.env'. You may not be able to log in!"
+fi
 
 # download the ubuntu iso. If it already exists, do not delete in the end.
 cd $tmp
