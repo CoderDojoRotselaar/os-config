@@ -1,6 +1,6 @@
 # regional setting
-d-i debian-installer/language                               string      nl_BE:en
-d-i debian-installer/country                                string      BE
+d-i debian-installer/language                               string      en_US:en
+d-i debian-installer/country                                string      US
 d-i debian-installer/locale                                 string      nl_BE
 d-i debian-installer/splash                                 boolean     false
 d-i localechooser/supported-locales                         multiselect nl_BE.UTF-8
