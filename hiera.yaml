@@ -5,7 +5,7 @@ defaults:
 
 hierarchy:
   - name: "Per-UUID data (for clean installations)"
-    path: "uuid/%{facts.dmi.product.uui}.yaml"
+    path: "uuid/%{facts.uuid_lower}.yaml"
 
   - name: "Per-OS defaults"
     path: "os/%{facts.os.name}.yaml"
