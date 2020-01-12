@@ -78,3 +78,9 @@ if [[ ! -d "${REPOSITORY_ROOT}" ]]; then
 fi
 
 ${REPOSITORY_ROOT}/puppet-apply.sh
+
+cat <<EOF
+You should reboot now. Press enter to reboot.
+Press ctrl+c to return to the shell.
+EOF
+reboot
