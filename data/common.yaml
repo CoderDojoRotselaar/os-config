@@ -10,5 +10,3 @@ profile::packages::auto_update:
 
 profile::desktop::background: coderdojo_background_black.png
 profile::git::repository: https://github.com/CoderDojoRotselaar/projecten.git
-
-profile::desktop_environment: lubuntu-desktop
