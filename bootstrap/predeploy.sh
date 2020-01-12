@@ -14,7 +14,6 @@ Type=oneshot
 Environment=HOME=/root
 Environment=USER=root
 ExecStart=/usr/local/sbin/deploy.sh
-ExecStartPost=/bin/rmdir /.deploy
 
 [Install]
 WantedBy=multi-user.target
