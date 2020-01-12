@@ -75,7 +75,7 @@ bion_vers=$(fgrep Bionic $tmphtml | head -1 | awk '{print $6}')
 # ask whether to include vmware tools or not
 download_file="ubuntu-$bion_vers-server-amd64.iso"
 download_location="http://cdimage.ubuntu.com/releases/$bion/release/"
-new_iso_name="ubuntu-$bion_vers-server-amd64-unattended.iso"
+new_iso_name="ubuntu-unattended.iso"
 
 if [ -f /etc/timezone ]; then
   timezone=$(cat /etc/timezone)
@@ -88,7 +88,9 @@ fi
 
 # ask the user questions about his/her preferences
 username=coderdojo
+pwhash='$6$XTj1xyhI$Ku8xdtmejyS0h/1wBIcLt8LBPoV2n7UBzKM7cCrQyd3CEyd.NeRrldfL05SHaQVGkgSopvDVt8fRX/6mbzuPL/'
 bootable=yes
+source unattended-parameters.env # override params here
 
 # download the ubuntu iso. If it already exists, do not delete in the end.
 cd $tmp
@@ -164,6 +166,9 @@ sed -i -r 's/timeout\s+[0-9]+/timeout 1/g' $tmp/iso_new/isolinux/isolinux.cfg
 # copy the coderdojo seed file to the iso
 cp -rT $tmp/$seed_file $tmp/iso_new/preseed/$seed_file
 
+cat <<EOF >>$tmp/iso_new/preseed/$seed_file
+${extra_preseed}
+EOF
 # include firstrun script
 cat <<EOF >>$tmp/iso_new/preseed/$seed_file
 # setup firstrun script
@@ -171,9 +176,6 @@ d-i preseed/late_command                                    string      \
   wget https://raw.githubusercontent.com/CoderDojoRotselaar/os-config/master/bootstrap/predeploy.sh -O /target/tmp/predeploy.sh; \
   chroot /target bash /tmp/predeploy.sh
 EOF
-
-# generate the password hash
-pwhash="$6$XTj1xyhI$Ku8xdtmejyS0h/1wBIcLt8LBPoV2n7UBzKM7cCrQyd3CEyd.NeRrldfL05SHaQVGkgSopvDVt8fRX/6mbzuPL/"
 
 # update the seed file to reflect the users' choices
 # the normal separator for sed is /, but both the password and the timezone may contain it
