@@ -24,7 +24,7 @@ EOF
 
 sleep 10
 
-if [[ "$USER" != "root" ]]; then
+if [[ "$UID" != "0" ]]; then
   cat <<EOF
 This script requires superuser access. You should rerun it as:
 $ sudo $0 ${@@Q}
