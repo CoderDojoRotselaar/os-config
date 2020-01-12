@@ -1,3 +1,6 @@
+#!/bin/bash
+
+cat <<EOF >/etc/systemd/system/auto-deploy.service
 [Unit]
 Description=yourscript
 ConditionPathExists=/.deploy
@@ -9,3 +12,8 @@ ExecStartPost=/bin/rmdir /.deploy
 
 [Install]
 WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable auto-deploy
+mkdir /.deploy
