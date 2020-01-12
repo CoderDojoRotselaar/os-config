@@ -6,11 +6,13 @@ chmod a+x /usr/local/sbin/deploy.sh
 
 cat <<EOF >/etc/systemd/system/auto-deploy.service
 [Unit]
-Description=yourscript
+Description=predeploy script
 ConditionPathExists=/.deploy
 
 [Service]
 Type=oneshot
+Environment=HOME=/root
+Environment=USER=root
 ExecStart=/usr/local/sbin/deploy.sh
 ExecStartPost=/bin/rmdir /.deploy
 
