@@ -1,0 +1,11 @@
+[Unit]
+Description=yourscript
+ConditionPathExists=/.deploy
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/deploy.sh
+ExecStartPost=/bin/rmdir /.deploy
+
+[Install]
+WantedBy=multi-user.target
