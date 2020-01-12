@@ -1,3 +1,2 @@
 ---
-profile::packages::install:
-  - lubuntu-desktop
+profile::desktop_environment: lubuntu-desktop
