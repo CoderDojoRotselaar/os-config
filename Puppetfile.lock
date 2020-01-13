@@ -19,6 +19,8 @@ FORGE
     puppetlabs-stdlib (5.2.0)
     puppetlabs-translate (1.2.0)
     puppetlabs-vcsrepo (3.1.0)
+    saz-sudo (6.0.0)
+      puppetlabs-stdlib (>= 2.6.0, < 7.0.0)
 
 GIT
   remote: https://github.com/CoderDojoRotselaar/os-profile.git
@@ -37,4 +39,5 @@ DEPENDENCIES
   puppetlabs-ntp (= 8.2.0)
   puppetlabs-stdlib (< 6.0.0)
   puppetlabs-vcsrepo (= 3.1.0)
+  saz-sudo (= 6.0.0)
 
