@@ -50,8 +50,7 @@ Ubuntu)
   if ! command -v puppet >/dev/null; then
     echo "Puppet not yet installed - installing now..."
     if ! dpkg -l puppet-release; then
-      . /etc/lsb-release
-      curl -sSL https://apt.puppetlabs.com/puppet-release-${DISTRIB_CODENAME}.deb >/tmp/puppet-release.deb
+      curl -sSL https://apt.puppetlabs.com/puppet-release-bionic.deb >/tmp/puppet-release.deb
       dpkg -i /tmp/puppet-release.deb
       rm -f /tmp/puppet-release.deb
     fi
