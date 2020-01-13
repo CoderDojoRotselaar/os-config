@@ -8,9 +8,13 @@ profile::packages::auto_update:
   - neovim
   - vim
   - inotify-tools
+  - python-pip
 
 profile::desktop::background: coderdojo_background_black.png
 profile::git::repository: https://github.com/CoderDojoRotselaar/projecten.git
 profile::locale::lang: nl_BE.UTF-8
 profile::locale::language: nl
 profile::keyboard::layout: be
+
+profile::codium::extensions:
+  - ms-python.python
