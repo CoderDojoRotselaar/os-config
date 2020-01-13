@@ -28,3 +28,9 @@ The user you run the above command with, should have `sudo` capabilities
 
 - RedHat family:
   - Fedora Workstation 31 (<https://fedoraproject.org/>)
+
+# Build your own installation stick
+
+The necessary tools are provided to build your own stick. You can find them in the `bootstrap` folder.
+
+Create a file `unattended-parameters.env` (look at the given example) to customize, then run `sudo create-unattended-iso.sh`. This will download the Ubuntu Bionic release ISO, and create a new ISO based on it. This ISO can be used as an image on an USB stick or a DVD to install devices. Attention: the devices will be completely wiped!
