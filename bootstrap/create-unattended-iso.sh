@@ -50,7 +50,7 @@ else
   timezone=$(find /usr/share/zoneinfo/ -type f -exec md5sum {} \; | grep "^$checksum" | sed "s/.*\/usr\/share\/zoneinfo\///" | head -n 1)
 fi
 
-# ask the user questions about his/her preferences
+custom_postinstall_script=
 fullname=coderdojo
 username=coderdojo
 hostname="coderdojo"
@@ -100,12 +100,25 @@ fi
 cp -rT $tmp/iso_org $tmp/iso_new &>/dev/null
 
 # set the language for the installation menu
-cd $tmp/iso_new
 #doesn't work for 16.04
 echo en >$tmp/iso_new/isolinux/lang
 
 # copy the coderdojo seed file to the iso
 cp -rT $tmp/$seed_file $tmp/iso_new/preseed/$seed_file
+
+if [[ -n "${custom_postinstall_script}" ]]; then
+  custom_postinstall_script_basename=$(basename "${custom_postinstall_script}")
+  cp -rT "${custom_postinstall_script}" "$tmp/iso_new/${custom_postinstall_script_basename}"
+fi
+
+cat <<EOF >$tmp/iso_new/post-install.sh
+#!/bin/bash
+
+wget https://raw.githubusercontent.com/CoderDojoRotselaar/os-config/master/bootstrap/predeploy.sh -O /tmp/predeploy.sh; \
+bash /tmp/predeploy.sh
+
+"/tmp/${custom_postinstall_script_basename}"
+EOF
 
 cat <<EOF >>$tmp/iso_new/preseed/$seed_file
 ${extra_preseed}
@@ -114,9 +127,8 @@ EOF
 cat <<EOF >>$tmp/iso_new/preseed/$seed_file
 # setup postinstall script
 d-i preseed/late_command                                    string      \
-  lvresize -L 8G /dev/coderdojo/root; resize2fs /dev/coderdojo/root; \
-  wget https://raw.githubusercontent.com/CoderDojoRotselaar/os-config/master/bootstrap/predeploy.sh -O /target/tmp/predeploy.sh; \
-  chroot /target bash /tmp/predeploy.sh
+  lvresize -L 8G /dev/coderdojo/root; resize2fs /dev/coderdojo/root; cp -rT /post-install.sh "/${custom_postinstall_script_basename}" /target/tmp/; \
+  chroot /target /bin/bash /tmp/post-install.sh
 EOF
 
 # update the seed file to reflect the users' choices
