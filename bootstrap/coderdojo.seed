@@ -19,6 +19,7 @@ d-i netcfg/choose_interface                                 select      auto
 d-i netcfg/dhcp_timeout                                     string      5
 d-i netcfg/get_hostname                                     string      {{hostname}}
 d-i netcfg/get_domain                                       string      {{hostname}}
+d-i netcfg/hostname                                         string      {{hostname}}
 
 # mirror settings
 d-i mirror/country                                          string      manual
