@@ -18,3 +18,4 @@ profile::keyboard::layout: be
 
 profile::codium::extensions:
   - ms-python.python
+  - jpogran.puppet-vscode
