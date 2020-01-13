@@ -108,7 +108,7 @@ cp -rT $tmp/$seed_file $tmp/iso_new/preseed/$seed_file
 
 if [[ -n "${custom_postinstall_script}" ]]; then
   custom_postinstall_script_basename=$(basename "${custom_postinstall_script}")
-  cp -rT "${custom_postinstall_script}" "$tmp/iso_new/${custom_postinstall_script_basename}"
+  cp -p "${custom_postinstall_script}" "$tmp/iso_new/${custom_postinstall_script_basename}"
 fi
 
 cat <<EOF >$tmp/iso_new/post-install.sh
@@ -117,7 +117,9 @@ cat <<EOF >$tmp/iso_new/post-install.sh
 wget https://raw.githubusercontent.com/CoderDojoRotselaar/os-config/master/bootstrap/predeploy.sh -O /tmp/predeploy.sh; \
 bash /tmp/predeploy.sh
 
-"/tmp/${custom_postinstall_script_basename}"
+if [[ -f "/tmp/${custom_postinstall_script_basename}" ]]; then
+  "/tmp/${custom_postinstall_script_basename}"
+fi
 EOF
 
 cat <<EOF >>$tmp/iso_new/preseed/$seed_file
@@ -127,7 +129,8 @@ EOF
 cat <<EOF >>$tmp/iso_new/preseed/$seed_file
 # setup postinstall script
 d-i preseed/late_command                                    string      \
-  lvresize -L 8G /dev/coderdojo/root; resize2fs /dev/coderdojo/root; cp -rT /post-install.sh "/${custom_postinstall_script_basename}" /target/tmp/; \
+  lvresize -L 8G /dev/coderdojo/root; resize2fs /dev/coderdojo/root; \
+  cp -p /cdrom/post-install.sh "/cdrom/${custom_postinstall_script_basename}" /target/tmp/; \
   chroot /target /bin/bash /tmp/post-install.sh
 EOF
 
