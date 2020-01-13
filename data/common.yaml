@@ -21,6 +21,7 @@ profile::codium::extensions:
   - mbessey.vscode-rufo
   - rebornix.ruby
   - wingrunr21.vscode-ruby
+  - formulahendry.code-runner
 
 profile::ruby::gems:
   - rufo
