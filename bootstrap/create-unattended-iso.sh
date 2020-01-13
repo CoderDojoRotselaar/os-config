@@ -2,7 +2,6 @@
 
 # file names & paths
 tmp="$(pwd)" # destination folder to store the final iso file
-hostname="coderdojo-clean"
 
 # define spinner function for slow tasks
 # courtesy of http://fitnr.com/showing-a-bash-spinner.html
@@ -79,8 +78,11 @@ else
 fi
 
 # ask the user questions about his/her preferences
+fullname=coderdojo
 username=coderdojo
+hostname="coderdojo"
 pwhash='x'
+extra_preseed=''
 [[ -f unattended-parameters.env ]] && source unattended-parameters.env # override params here
 
 if [[ "${pwhash}" == "x" ]]; then
@@ -154,7 +156,7 @@ sed -i "s@{{hostname}}@$hostname@g" $tmp/iso_new/preseed/$seed_file
 sed -i "s@{{timezone}}@$timezone@g" $tmp/iso_new/preseed/$seed_file
 
 # calculate checksum for seed file
-seed_checksum=$(md5sum $tmp/iso_new/preseed/$seed_file)
+seed_checksum=$(md5sum $tmp/iso_new/preseed/$seed_file | awk '{print $1}')
 
 # add the autoinstall option to the menu
 sed -i "/label install/ilabel autoinstall\n\
@@ -179,6 +181,8 @@ umount $tmp/iso_org
 rm -rf $tmp/iso_new
 rm -rf $tmp/iso_org
 rm -rf $tmphtml
+
+chown $SUDO_USER: $tmp/$new_iso_name
 
 # print info to user
 echo " -----"
