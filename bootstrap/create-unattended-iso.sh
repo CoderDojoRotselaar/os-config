@@ -3,22 +3,6 @@
 # file names & paths
 tmp="$(pwd)" # destination folder to store the final iso file
 
-# define spinner function for slow tasks
-# courtesy of http://fitnr.com/showing-a-bash-spinner.html
-spinner() {
-  local pid=$1
-  local delay=0.75
-  local spinstr='|/-\'
-  while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
-    local temp=${spinstr#?}
-    printf " [%c]  " "$spinstr"
-    local spinstr=$temp${spinstr%"$temp"}
-    sleep $delay
-    printf "\b\b\b\b\b\b"
-  done
-  printf "    \b\b\b\b"
-}
-
 # define download function
 # courtesy of http://fitnr.com/showing-file-download-progress-using-wget.html
 download() {
@@ -28,17 +12,6 @@ download() {
     sed -u -e "s,\.,,g" | awk '{printf("\b\b\b\b%4s", $2)}'
   echo -ne "\b\b\b\b"
   echo " DONE"
-}
-
-# define function to check if program is installed
-# courtesy of https://gist.github.com/JamieMason/4761049
-function program_is_installed() {
-  # set to 1 initially
-  local return_=1
-  # set to 0 if not found
-  type $1 >/dev/null 2>&1 || { local return_=0; }
-  # return value
-  echo $return_
 }
 
 # print a pretty header
@@ -60,8 +33,8 @@ tmphtml=$tmp/tmphtml
 rm $tmphtml >/dev/null 2>&1
 wget -O $tmphtml 'http://releases.ubuntu.com/' >/dev/null 2>&1
 
-ubuntu=$(fgrep Eoan $tmphtml | head -1 | awk '{print $3}' | sed 's/href=\"//; s/\/\"//')
-ubuntu_vers=$(fgrep Eoan $tmphtml | head -1 | awk '{print $6}')
+ubuntu=$(fgrep Bionic $tmphtml | head -1 | awk '{print $3}' | sed 's/href=\"//; s/\/\"//')
+ubuntu_vers=$(fgrep Bionic $tmphtml | head -1 | awk '{print $6}')
 
 # ask whether to include vmware tools or not
 download_file="ubuntu-$ubuntu_vers-server-amd64.iso"
@@ -82,7 +55,6 @@ fullname=coderdojo
 username=coderdojo
 hostname="coderdojo"
 pwhash='x'
-extra_preseed=''
 [[ -f unattended-parameters.env ]] && source unattended-parameters.env # override params here
 
 if [[ "${pwhash}" == "x" ]]; then
@@ -125,8 +97,7 @@ else
 fi
 
 # copy the iso contents to the working directory
-(cp -rT $tmp/iso_org $tmp/iso_new >/dev/null 2>&1) &
-spinner $!
+cp -rT $tmp/iso_org $tmp/iso_new &>/dev/null
 
 # set the language for the installation menu
 cd $tmp/iso_new
@@ -159,19 +130,37 @@ sed -i "s@{{timezone}}@$timezone@g" $tmp/iso_new/preseed/$seed_file
 seed_checksum=$(md5sum $tmp/iso_new/preseed/$seed_file | awk '{print $1}')
 
 # add the autoinstall option to the menu
-sed -i "/label install/ilabel autoinstall\n\
-  menu label ^Autoinstall CoderDojo\n\
-  kernel /install/vmlinuz\n\
-  append file=/cdrom/preseed/ubuntu-server.seed initrd=/install/initrd.gz auto=true priority=high preseed/file=/cdrom/preseed/coderdojo.seed preseed/file/checksum=$seed_checksum --" $tmp/iso_new/isolinux/txt.cfg
+cat <<EOF >$tmp/iso_new/isolinux/txt.cfg
+label autoinstall
+menu label ^Autoinstall CoderDojo
+kernel /install/vmlinuz
+append file=/cdrom/preseed/ubuntu-server.seed initrd=/install/initrd.gz auto=true priority=high preseed/file=/cdrom/preseed/${seed_file} preseed/file/checksum=$seed_checksum --
+EOF
 
 # add the autoinstall option to the menu for USB Boot
-sed -i '/set timeout=5/amenuentry "Autoinstall Netson Ubuntu Server" {\n\	set gfxpayload=keep\n\	linux /install/vmlinuz append file=/cdrom/preseed/ubuntu-server.seed initrd=/install/initrd.gz auto=true priority=high preseed/file=/cdrom/preseed/coderdojo.seed quiet ---\n\	initrd	/install/initrd.gz\n\}' $tmp/iso_new/boot/grub/grub.cfg
-sed -i -r 's/timeout=[0-9]+/timeout=1/g' $tmp/iso_new/boot/grub/grub.cfg
+cat <<EOF >$tmp/iso_new/boot/grub/grub.cfg
+if loadfont /boot/grub/font.pf2 ; then
+  set gfxmode=auto
+  insmod efi_gop
+  insmod efi_uga
+  insmod gfxterm
+  terminal_output gfxterm
+fi
+
+set menu_color_normal=white/black
+set menu_color_highlight=black/light-gray
+
+set timeout=1
+menuentry "Autoinstall CoderDojo" {
+  set gfxpayload=keep
+  linux /install/vmlinuz append file=/cdrom/preseed/ubuntu-server.seed initrd=/install/initrd.gz auto=true priority=high preseed/file=/cdrom/preseed/${seed_file} quiet ---
+  initrd  /install/initrd.gz
+}
+EOF
 
 echo " creating the remastered iso"
 cd $tmp/iso_new
-(mkisofs -D -r -V "CODERDOJO_UBUNTU" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o $tmp/$new_iso_name . >/dev/null 2>&1) &
-spinner $!
+mkisofs -D -r -V "CODERDOJO_UBUNTU" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o $tmp/$new_iso_name . &>/dev/null
 
 # make iso bootable (for dd'ing to  USB stick)
 isohybrid $tmp/$new_iso_name
