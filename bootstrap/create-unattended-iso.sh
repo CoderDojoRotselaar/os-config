@@ -112,8 +112,9 @@ ${extra_preseed}
 EOF
 # include firstrun script
 cat <<EOF >>$tmp/iso_new/preseed/$seed_file
-# setup firstrun script
+# setup postinstall script
 d-i preseed/late_command                                    string      \
+  lvresize -L 8G /dev/coderdojo/root; resize2fs /dev/coderdojo/root; \
   wget https://raw.githubusercontent.com/CoderDojoRotselaar/os-config/master/bootstrap/predeploy.sh -O /target/tmp/predeploy.sh; \
   chroot /target bash /tmp/predeploy.sh
 EOF
