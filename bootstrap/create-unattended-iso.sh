@@ -61,12 +61,12 @@ tmphtml=$tmp/tmphtml
 rm $tmphtml >/dev/null 2>&1
 wget -O $tmphtml 'http://releases.ubuntu.com/' >/dev/null 2>&1
 
-bion=$(fgrep Bionic $tmphtml | head -1 | awk '{print $3}' | sed 's/href=\"//; s/\/\"//')
-bion_vers=$(fgrep Bionic $tmphtml | head -1 | awk '{print $6}')
+ubuntu=$(fgrep Eoan $tmphtml | head -1 | awk '{print $3}' | sed 's/href=\"//; s/\/\"//')
+ubuntu_vers=$(fgrep Eoan $tmphtml | head -1 | awk '{print $6}')
 
 # ask whether to include vmware tools or not
-download_file="ubuntu-$bion_vers-server-amd64.iso"
-download_location="http://cdimage.ubuntu.com/releases/$bion/release/"
+download_file="ubuntu-$ubuntu_vers-server-amd64.iso"
+download_location="http://cdimage.ubuntu.com/releases/$ubuntu/release/"
 new_iso_name="ubuntu-unattended.iso"
 
 if [ -f /etc/timezone ]; then
