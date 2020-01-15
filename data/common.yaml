@@ -1,7 +1,6 @@
 profile::user::coderdojo_password: "$6$XTj1xyhI$Ku8xdtmejyS0h/1wBIcLt8LBPoV2n7UBzKM7cCrQyd3CEyd.NeRrldfL05SHaQVGkgSopvDVt8fRX/6mbzuPL/"
 profile::packages::auto_update:
   - git
-  - git-crypt
   - puppet-agent
   - bash
   - curl
