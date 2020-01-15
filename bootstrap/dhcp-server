@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Run a DHCP server, given that you have a tftp server ready:
+# You should modify the dhcpd.conf file to suit your network!
+
+docker run --rm --net=host --name pxe \
+  -v "$(pwd)/dhcpd.conf":/etc/dhcp/dhcpd.conf:ro \
+  slicedbread/pxedockcat
