@@ -13,6 +13,9 @@ hierarchy:
   - name: "Per-OS-family defaults"
     path: "os/family/%{facts.os.family}.yaml"
 
+  - name: "Secrets"
+    glob: "/root/secrets/hieradata/*.yaml"
+
   - name: "Common data"
     path: "common.yaml"
 
