@@ -29,3 +29,5 @@ profile::ruby::gems:
 
 profile::python::pip3s:
   - black
+
+profile::secrets::secret_repo: https://github.com/CoderDojoRotselaar/secrets.git
