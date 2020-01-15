@@ -4,9 +4,6 @@ defaults:
   data_hash: yaml_data
 
 hierarchy:
-  - name: "Per-UUID data (for clean installations)"
-    path: "uuid/%{facts.uuid_lower}.yaml"
-
   - name: "Per-OS defaults"
     path: "os/%{facts.os.name}.yaml"
 

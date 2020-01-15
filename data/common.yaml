@@ -32,3 +32,8 @@ profile::python::pip3s:
 
 profile::secrets::secret_repo: https://github.com/CoderDojoRotselaar/secrets.git
 profile::secrets::key_path: /root/.ssh/coderdojo-crypt-key
+
+profile::hostname::lookup:
+  D36D0401-4AEE-11CB-986D-C33AF972FDBD: cdj-rots-100
+  44454C4C-4300-104E-8051-C4C04F59334A: cdj-rots-101
+  44454C4C-5A00-1048-8047-B9C04F4D344A: cdj-rots-102
