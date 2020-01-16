@@ -17,7 +17,7 @@ function updatePuppet() {
     cd "${REPOSITORY_ROOT}"
     set -x
     git reset --hard HEAD
-    git pull
+    git pull origin master
     librarian-puppet install --verbose ||
       librarian-puppet install --verbose --clean
   fi
