@@ -47,10 +47,10 @@ profile::hostname::lookup:
 profile::ssh_keys::keys:
   jo:
     type: ssh-rsa
-    key: >
-      AAAAB3NzaC1yc2EAAAADAQABAAABAQDTgfzmR8apa1AWOArZ4J/VeFcFdvjjirf7
-      ljHJVGf0xwHO9haO2d5pZJC35mAuHSwrYpkORFJoe8oTqZY6jI2DQ1kXAsMWxUUX
-      t5Y1EOxOjL59iqZPro42Jk19j/OK4Fo/R+2d804GreFnZM4OkgE18suhgjU4gHHb
-      1YB9CFeGHRTxn67Fg752W+MGrWORU30jF4F1BrNAdt8eLXZwPv322wSosvk8bssx
-      fMZC2pVj1ZDJyKh6feZR9/PMnmJxZNixLt8bO5FQCZ9/xdIuNJYQXYpO99ygpjt2
-      5/gbRcBqoPAvsv81Hga5mB0iMJS3DAvULE7feaXaDV5NrHdtkRWF
+    key: "\
+      AAAAB3NzaC1yc2EAAAADAQABAAABAQDTgfzmR8apa1AWOArZ4J/VeFcFdvjjirf7\
+      ljHJVGf0xwHO9haO2d5pZJC35mAuHSwrYpkORFJoe8oTqZY6jI2DQ1kXAsMWxUUX\
+      t5Y1EOxOjL59iqZPro42Jk19j/OK4Fo/R+2d804GreFnZM4OkgE18suhgjU4gHHb\
+      1YB9CFeGHRTxn67Fg752W+MGrWORU30jF4F1BrNAdt8eLXZwPv322wSosvk8bssx\
+      fMZC2pVj1ZDJyKh6feZR9/PMnmJxZNixLt8bO5FQCZ9/xdIuNJYQXYpO99ygpjt2\
+      5/gbRcBqoPAvsv81Hga5mB0iMJS3DAvULE7feaXaDV5NrHdtkRWF"
