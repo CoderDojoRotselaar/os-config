@@ -16,6 +16,7 @@ function updatePuppet() {
   if checkNetwork; then
     cd "${REPOSITORY_ROOT}"
     set -x
+    git reset --hard HEAD
     git pull
     librarian-puppet install --verbose ||
       librarian-puppet install --verbose --clean
