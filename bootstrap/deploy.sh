@@ -79,6 +79,7 @@ fi
 
 ${REPOSITORY_ROOT}/puppet-apply.sh
 rmdir /.deploy
+rm -vrf /var/crash/*
 
 cat <<EOF
 You should reboot now. Press enter to reboot.

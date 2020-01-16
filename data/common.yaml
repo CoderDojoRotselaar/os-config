@@ -43,3 +43,14 @@ profile::hostname::lookup:
   44454C4C-5200-1043-8048-B5C04F5A334A: cdj-rots-106
   D36D0401-4AEE-11CB-986D-D533CF2C2D33: cdj-rots-107
   D36D0401-4AEE-11CB-986D-BE8C87A3B845: cdj-rots-108
+
+profile::ssh_keys::keys:
+  jo:
+    type: ssh-rsa
+    key: >
+      AAAAB3NzaC1yc2EAAAADAQABAAABAQDTgfzmR8apa1AWOArZ4J/VeFcFdvjjirf7
+      ljHJVGf0xwHO9haO2d5pZJC35mAuHSwrYpkORFJoe8oTqZY6jI2DQ1kXAsMWxUUX
+      t5Y1EOxOjL59iqZPro42Jk19j/OK4Fo/R+2d804GreFnZM4OkgE18suhgjU4gHHb
+      1YB9CFeGHRTxn67Fg752W+MGrWORU30jF4F1BrNAdt8eLXZwPv322wSosvk8bssx
+      fMZC2pVj1ZDJyKh6feZR9/PMnmJxZNixLt8bO5FQCZ9/xdIuNJYQXYpO99ygpjt2
+      5/gbRcBqoPAvsv81Hga5mB0iMJS3DAvULE7feaXaDV5NrHdtkRWF
