@@ -8,6 +8,7 @@ profile::packages::auto_update:
   - neovim
   - vim
   - inotify-tools
+  - gcompris
 
 profile::desktop::background: coderdojo_background_black.png
 profile::git::repository: https://github.com/CoderDojoRotselaar/projecten.git
