@@ -44,9 +44,19 @@ GIT
   specs:
     coderdojorotselaar-profile (0.1.0)
 
+GIT
+  remote: https://github.com/jovandeginste/puppet-syncthing.git
+  ref: master
+  sha: 51d0fb2e48d0c4960c068cb1095bd07c0f0d0f98
+  specs:
+    jovandeginste-syncthing (1.1.5)
+      puppetlabs-apt (>= 1.7.0, < 7.0.0)
+      puppetlabs-stdlib (>= 4.5.0, < 6.0.0)
+
 DEPENDENCIES
   coderdojorotselaar-profile (>= 0)
   ghoneycutt-ssh (= 3.61.0)
+  jovandeginste-syncthing (>= 0)
   mmckinst-hash2stuff (= 1.2.1)
   puppet-unattended_upgrades (= 4.0.0)
   puppetlabs-apt (< 7.0.0)
