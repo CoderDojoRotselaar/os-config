@@ -13,14 +13,18 @@ function checkNetwork() {
 }
 
 function updatePuppet() {
-  if checkNetwork; then
-    cd "${REPOSITORY_ROOT}"
-    set -x
-    git reset --hard HEAD
-    git pull origin master
-    librarian-puppet install --verbose ||
-      librarian-puppet install --verbose --clean
-  fi
+  cd "${REPOSITORY_ROOT}"
+  set -x
+  git reset --hard HEAD
+  git pull origin master
+  librarian-puppet install --verbose ||
+    librarian-puppet install --verbose --clean
+}
+function updateSecrets() {
+  cd /root/secrets/
+  set -x
+  git reset --hard HEAD
+  git pull origin master
 }
 
 function applyPuppet() {
@@ -43,7 +47,12 @@ fi
 REPOSITORY_ROOT=/var/lib/puppet-deployment
 
 if [[ "${cmd}" == "update" ]]; then
-  updatePuppet
+  if checkNetwork; then
+    updatePuppet
+    if [[ -d /root/secrets/ ]]; then
+      updateSecrets
+    fi
+  fi
 fi
 
 applyPuppet "$@"
