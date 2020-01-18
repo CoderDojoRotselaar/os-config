@@ -11,7 +11,7 @@ profile::packages::auto_update:
   - gcompris
 
 profile::desktop::background: coderdojo_background_black.png
-profile::git::repository: https://github.com/CoderDojoRotselaar/projecten.git
+profile::git::repository: https://github.com/CoderDojoRotselaar/demo-projecten.git
 profile::locale::lang: nl_BE.UTF-8
 profile::locale::language: nl
 profile::keyboard::layout: be
