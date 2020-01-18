@@ -40,7 +40,7 @@ FORGE
 GIT
   remote: https://github.com/CoderDojoRotselaar/os-profile.git
   ref: master
-  sha: cabc1dedc33a782a89a47220e341529cdc9102af
+  sha: 4c19787679faa8af863a61e5694f60f1b9a58c3d
   specs:
     coderdojorotselaar-profile (0.1.0)
 
