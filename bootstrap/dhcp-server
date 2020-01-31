@@ -5,4 +5,4 @@
 
 docker run --rm --net=host --name pxe \
   -v "$(pwd)/dhcpd.conf":/etc/dhcp/dhcpd.conf:ro \
-  slicedbread/pxedockcat
+  slicedbread/pxedock
