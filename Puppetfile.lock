@@ -10,6 +10,7 @@ FORGE
       puppetlabs-firewall (>= 1.9.0, < 2.0.0)
       puppetlabs-sshkeys_core (>= 1.0.1, < 2.0.0)
       puppetlabs-stdlib (>= 4.6.0, < 6.0.0)
+    kemra102-snapd (1.1.0)
     mmckinst-hash2stuff (1.2.1)
     puppet-archive (4.4.0)
       puppetlabs-stdlib (>= 4.18.0, < 7.0.0)
@@ -42,7 +43,7 @@ FORGE
 GIT
   remote: https://github.com/CoderDojoRotselaar/os-profile.git
   ref: master
-  sha: 7569115043bab2eaa6c0e2327a9c195c5d93f1ef
+  sha: 79a691e1432f9d28ef7cacb5ca4fa990a20e588c
   specs:
     coderdojorotselaar-profile (0.1.0)
 
@@ -59,6 +60,7 @@ DEPENDENCIES
   coderdojorotselaar-profile (>= 0)
   ghoneycutt-ssh (= 3.61.0)
   jovandeginste-syncthing (>= 0)
+  kemra102-snapd (= 1.1.0)
   mmckinst-hash2stuff (= 1.2.1)
   puppet-archive (= 4.4.0)
   puppet-unattended_upgrades (= 4.0.0)
