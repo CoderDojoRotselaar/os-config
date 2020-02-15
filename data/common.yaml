@@ -33,6 +33,8 @@ profile::python::pip3s:
 profile::snaps::packages:
   - ripgrep
   - godot
+  - chromium
+
 profile::secrets::secret_repo: https://github.com/CoderDojoRotselaar/secrets.git
 profile::secrets::key_path: /root/.ssh/coderdojo-crypt-key
 ssh::sshd_password_authentication: "no"
