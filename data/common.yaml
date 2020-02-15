@@ -61,3 +61,5 @@ profile::ssh_keys::keys:
       1YB9CFeGHRTxn67Fg752W+MGrWORU30jF4F1BrNAdt8eLXZwPv322wSosvk8bssx\
       fMZC2pVj1ZDJyKh6feZR9/PMnmJxZNixLt8bO5FQCZ9/xdIuNJYQXYpO99ygpjt2\
       5/gbRcBqoPAvsv81Hga5mB0iMJS3DAvULE7feaXaDV5NrHdtkRWF"
+
+syncthing::package_version: installed
