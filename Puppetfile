@@ -13,5 +13,5 @@ mod 'ghoneycutt-ssh', '3.61.0'
 mod 'puppet-archive', '4.4.0'
 mod 'kemra102-snapd', '1.1.0'
 
-mod 'jovandeginste/syncthing', :git => 'https://github.com/jovandeginste/puppet-syncthing.git'
+mod 'brwyatt/syncthing', :git => 'https://github.com/brwyatt/puppet-syncthing.git'
 mod 'coderdojorotselaar/profile', :git => 'https://github.com/CoderDojoRotselaar/os-profile.git'
