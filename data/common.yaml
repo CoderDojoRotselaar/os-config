@@ -70,19 +70,15 @@ profile::firefox::bookmarks:
     url: http://www.coderdojobelgium.be/nl
     favicon: http://www.coderdojobelgium.be/sites/all/themes/coderdojo/images/favicon.ico
     title: CoderDojo Belgium
-    order: 1
   scratch:
     url: https://scratch.mit.edu/
     favicon: https://scratch.mit.edu/favicon.ico
     title: Scratch - Imagine, Program, Share
-    order: 2
   smartschool:
     url: https://www.smartschool.be/
     favicon: https://www.smartschool.be/wp/wp-content/uploads/2013/10/favicon.ico
     title: Smartschool
-    order: 3
   bingel:
     url: https://www.bingel.be/bingel/
-    favicon: https://www.bingel.be/favicons/favicon-16x16.png
+    favicon: https://www.bingel.be/favicons/favicon-196x196.png
     title: Bingel
-    order: 4
