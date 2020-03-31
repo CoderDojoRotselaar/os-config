@@ -14,6 +14,7 @@ profile::packages::auto_update:
   - libreoffice
   - libreoffice-help-nl
   - libreoffice-l10n-nl
+  - chromium-browser
 
 profile::desktop::background: coderdojo_background_black.png
 profile::git::repository: https://github.com/CoderDojoRotselaar/demo-projecten.git
