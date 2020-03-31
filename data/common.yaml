@@ -9,6 +9,10 @@ profile::packages::auto_update:
   - vim
   - inotify-tools
   - gcompris
+  - hyphen-nl
+  - libreoffice
+  - libreoffice-help-nl
+  - libreoffice-l10n-nl
 
 profile::desktop::background: coderdojo_background_black.png
 profile::git::repository: https://github.com/CoderDojoRotselaar/demo-projecten.git
