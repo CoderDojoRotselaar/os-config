@@ -79,9 +79,9 @@ profile::firefox::bookmarks:
     favicon: https://scratch.mit.edu/favicon.ico
     title: Scratch - Imagine, Program, Share
   smartschool:
-    url: https://www.smartschool.be/
+    url: https://gbswezemaal.smartschool.be/
     favicon: https://www.smartschool.be/wp/wp-content/uploads/2013/10/favicon.ico
-    title: Smartschool
+    title: Het Nest - Smartschool
   bingel:
     url: https://www.bingel.be/bingel/
     favicon: https://www.bingel.be/favicons/favicon-196x196.png
