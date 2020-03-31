@@ -4,6 +4,7 @@ profile::packages::auto_update:
   - puppet-agent
   - bash
   - curl
+  - gimp
   - openssl
   - neovim
   - vim
