@@ -1,2 +1,2 @@
-profile::packages::auto_update:
+profile::packages::install:
   - ripgrep

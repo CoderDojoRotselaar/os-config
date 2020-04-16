@@ -1,4 +1,4 @@
-profile::packages::auto_update:
+profile::packages::install:
   - gnome-shell-extension-dash-to-dock
   - gnome-shell-extension-pidgin
   - gnome-shell-extension-suspend-button
