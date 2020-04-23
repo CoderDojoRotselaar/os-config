@@ -1,19 +1,20 @@
 profile::user::coderdojo_password: "$6$XTj1xyhI$Ku8xdtmejyS0h/1wBIcLt8LBPoV2n7UBzKM7cCrQyd3CEyd.NeRrldfL05SHaQVGkgSopvDVt8fRX/6mbzuPL/"
 profile::packages::install:
-  - git
-  - puppet-agent
   - bash
   - curl
-  - gimp
-  - openssl
-  - neovim
-  - vim
-  - inotify-tools
   - gcompris
+  - gimp
+  - git
   - hyphen-nl
+  - inotify-tools
+  - inxi
   - libreoffice
   - libreoffice-help-nl
   - libreoffice-l10n-nl
+  - neovim
+  - openssl
+  - puppet-agent
+  - vim
 
 profile::desktop::background: coderdojo_background_black.png
 profile::git::repository: https://github.com/CoderDojoRotselaar/demo-projecten.git
