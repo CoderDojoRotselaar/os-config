@@ -7,7 +7,6 @@ profile::packages::install:
   - git
   - hyphen-nl
   - inotify-tools
-  - inxi
   - libreoffice
   - libreoffice-help-nl
   - libreoffice-l10n-nl
