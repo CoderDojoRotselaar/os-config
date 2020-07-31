@@ -23,7 +23,7 @@ profile::keyboard::layout: be
 
 profile::codium::extensions:
   - ms-python.python
-  - jpogran.puppet-vscode
+  - puppet.puppet-vscode
   - mbessey.vscode-rufo
   - rebornix.ruby
   - wingrunr21.vscode-ruby
