@@ -17,28 +17,17 @@ As clean as possible. We need Internet, and either:
 - a user 'coderdojo' with uid `1000`
 - no user with uid `1000`
 
-The user you run the above command with, should have `sudo` capabilities
+The user you run the above command with, should have `sudo` capabilities.
 
 # Supported operating systems
 
 - Debian family:
-
   - Linux Lite 4.6 (<https://www.linuxliteos.com/>)
   - Ubuntu 18.04.3 Desktop LTS (<https://www.ubuntu.com/>)
 
 - RedHat family:
   - Fedora Workstation 31 (<https://fedoraproject.org/>)
 
-# Build your own installation stick
+# Installing new devices
 
-The necessary tools are provided to build your own stick. You can find them in the `bootstrap` folder.
-
-Create a file `unattended-parameters.env` (look at the given example) to customize, then run `sudo create-unattended-iso.sh`. This will download the Ubuntu Bionic release ISO, and create a new ISO based on it. This ISO can be used as an image on an USB stick or a DVD to install devices. Attention: the devices will be completely wiped!
-
-Internet is needed during installation; a network cable is the easiest, but you can configure Wi-Fi during installation too. Add this to the `unattended-parameters.env` file:
-
-```bash
-extra_preseed="d-i netcfg/wireless_essid mySSID
-d-i netcfg/wireless_security_type wpa
-d-i netcfg/wireless_wpa MyPassword"
-```
+See: [this repository](https://github.com/CoderDojoRotselaar/bootstrapping)
