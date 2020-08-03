@@ -20,14 +20,18 @@ function updatePuppet() {
   librarian-puppet install --verbose ||
     librarian-puppet install --verbose --clean
 }
+
 function updateSecrets() {
-  cd /root/secrets/
-  set -x
-  git reset --hard HEAD
-  git pull origin master
+  if [[ -d /root/secrets/ ]]; then
+    cd /root/secrets/
+    set -x
+    git reset --hard HEAD
+    git pull origin master
+  fi
 }
 
 function applyPuppet() {
+  puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp" "$@" --tags early 
   puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp" "$@"
 }
 
@@ -49,9 +53,7 @@ REPOSITORY_ROOT=/var/lib/puppet-deployment
 if [[ "${cmd}" == "update" ]]; then
   if checkNetwork; then
     updatePuppet
-    if [[ -d /root/secrets/ ]]; then
-      updateSecrets
-    fi
+    updateSecrets
   fi
 fi
 
