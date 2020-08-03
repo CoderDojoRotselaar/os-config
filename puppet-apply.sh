@@ -31,7 +31,6 @@ function updateSecrets() {
 }
 
 function applyPuppet() {
-  puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp" "$@" --tags early 
   puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp" "$@"
 }
 
