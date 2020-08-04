@@ -31,6 +31,8 @@ function updateSecrets() {
 }
 
 function applyPuppet() {
+  export APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
+
   puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp" "$@"
 }
 
