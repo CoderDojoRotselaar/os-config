@@ -34,6 +34,11 @@ function applyPuppet() {
   puppet apply --confdir="${REPOSITORY_ROOT}" "${REPOSITORY_ROOT}/manifests/site.pp" "$@"
 }
 
+if ps aux | grep -v grep | grep -q "/opt/puppetlabs/puppet/bin/puppet"; then
+  echo "Puppet is already running!"
+  exit 1
+fi
+
 cmd="update"
 if [[ -n "${1:-}" ]]; then
   case "$1" in
