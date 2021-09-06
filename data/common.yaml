@@ -13,7 +13,6 @@ profile::packages::install:
   - neovim
   - openssl
   - puppet-agent
-  - tilix
   - vim
 
 profile::desktop::background: coderdojo_background_black.png
@@ -55,7 +54,6 @@ profile::hostname::lookup:
   D36D0401-4AEE-11CB-986D-BE8C87A3B845: cdj-rots-108
   44454C4C-4A00-104C-8059-B7C04F4C344A: cdj-rots-109
   5D0ABCC1-D375-4E77-ADBF-6DBF33F16BC6: cdj-jovdg-1
-  D67FA600-1C40-81E1-2040-386077E59104: cdj-jovdg-2
 
 profile::ssh_keys::keys:
   jo:
