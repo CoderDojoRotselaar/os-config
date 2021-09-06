@@ -13,6 +13,7 @@ profile::packages::install:
   - neovim
   - openssl
   - puppet-agent
+  - tilix
   - vim
 
 profile::desktop::background: coderdojo_background_black.png
