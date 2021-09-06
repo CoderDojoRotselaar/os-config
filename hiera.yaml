@@ -4,6 +4,9 @@ defaults:
   data_hash: yaml_data
 
 hierarchy:
+  - name: "Per-host defaults"
+    path: "nodes/%{facts.hostname}.yaml"
+
   - name: "Per-OS defaults"
     path: "os/%{facts.os.name}.yaml"
 
