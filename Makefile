@@ -1,4 +1,6 @@
-LIBRARIAN_CMD=librarian-puppet
+LIBRARIAN_CMD=docker run --rm -u $(shell id -u):$(shell id -g) -v $(shell pwd):/work librarian-puppet
+
+.PHONY: librarian
 
 install-modules:
 	$(LIBRARIAN_CMD) install --verbose
@@ -11,3 +13,5 @@ bump: update-modules
 	git ci -m "Bump modules"
 	git push
 
+librarian:
+	docker build --pull=true -t librarian-puppet librarian/
