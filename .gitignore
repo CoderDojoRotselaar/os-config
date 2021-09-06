@@ -1,2 +1,3 @@
-.tmp
-.r10k
+.tmp/
+.r10k/
+modules/
