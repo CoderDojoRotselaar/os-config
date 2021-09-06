@@ -17,8 +17,7 @@ function updatePuppet() {
   set -x
   git reset --hard HEAD
   git pull origin master
-  librarian-puppet install --verbose ||
-    librarian-puppet install --verbose --clean
+  r10k puppetfile install --verbose
 }
 
 function updateSecrets() {
@@ -44,13 +43,13 @@ fi
 cmd="update"
 if [[ -n "${1:-}" ]]; then
   case "$1" in
-  -*)
-    # nothing
-    ;;
-  *)
-    cmd="$1"
-    shift
-    ;;
+    -*)
+      # nothing
+      ;;
+    *)
+      cmd="$1"
+      shift
+      ;;
   esac
 fi
 

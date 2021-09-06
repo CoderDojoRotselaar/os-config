@@ -1,12 +1,9 @@
-LIBRARIAN_CMD=librarian-puppet
+LIBRARIAN_CMD=docker run --rm -u0 -v $(shell pwd)/:/home/puppet/ puppet/r10k
 
 install-modules:
-	$(LIBRARIAN_CMD) install --verbose
+	$(LIBRARIAN_CMD) puppetfile install --verbose
 
-update-modules:
-	$(LIBRARIAN_CMD) update --verbose
-
-bump: update-modules
+bump: install-modules
 	git add Puppetfile.lock
 	git ci -m "Bump modules"
 	git push
