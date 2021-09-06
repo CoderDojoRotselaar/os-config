@@ -35,8 +35,6 @@ profile::python::pips:
   - black
 
 profile::snaps::packages:
-  - chromium
-  - scratux
   - ripgrep
   - godot
 
