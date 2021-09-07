@@ -3,6 +3,7 @@ profile::packages::install:
   - bash
   - curl
   - gcompris
+  - godot3
   - gimp
   - git
   - hyphen-nl
@@ -36,7 +37,6 @@ profile::python::pips:
 
 profile::snaps::packages:
   - ripgrep
-  - godot
 
 profile::secrets::secret_repo: https://github.com/CoderDojoRotselaar/secrets.git
 profile::secrets::key_path: /root/.ssh/coderdojo-crypt-key
