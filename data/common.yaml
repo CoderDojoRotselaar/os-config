@@ -3,9 +3,9 @@ profile::packages::install:
   - bash
   - curl
   - gcompris
-  - godot3
   - gimp
   - git
+  - godot3
   - hyphen-nl
   - inotify-tools
   - libreoffice
@@ -14,6 +14,7 @@ profile::packages::install:
   - neovim
   - openssl
   - puppet-agent
+  - ripgrep
   - vim
 
 profile::desktop::background: coderdojo_background_black.png
@@ -34,9 +35,6 @@ profile::ruby::gems:
 
 profile::python::pips:
   - black
-
-profile::snaps::packages:
-  - ripgrep
 
 profile::secrets::secret_repo: https://github.com/CoderDojoRotselaar/secrets.git
 profile::secrets::key_path: /root/.ssh/coderdojo-crypt-key
