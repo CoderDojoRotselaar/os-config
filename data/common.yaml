@@ -80,6 +80,6 @@ profile::firefox::bookmarks:
     favicon: https://www.smartschool.be/wp/wp-content/uploads/2013/10/favicon.ico
     title: Het Nest - Smartschool
   bingel:
-    url: https://www.bingel.be/bingel/
-    favicon: https://www.bingel.be/favicons/favicon-196x196.png
+    url: https://www.bingel.be/pupil/authentication/login
+    favicon: https://www.bingel.be/pupil/assets/favicons/bingel/favicon-196x196.png
     title: Bingel
