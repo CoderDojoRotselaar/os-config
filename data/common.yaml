@@ -52,6 +52,7 @@ profile::hostname::lookup:
   D36D0401-4AEE-11CB-986D-BE8C87A3B845: cdj-rots-108
   44454C4C-4A00-104C-8059-B7C04F4C344A: cdj-rots-109
   5D0ABCC1-D375-4E77-ADBF-6DBF33F16BC6: cdj-jovdg-1
+  48653158-E1F9-4E69-8877-E08F3CDD107F: cdjvm-jovdg-2
 
 profile::ssh_keys::keys:
   jo:
