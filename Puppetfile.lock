@@ -14,9 +14,9 @@ FORGE
     mmckinst-hash2stuff (1.2.1)
     puppet-archive (6.0.1)
       puppetlabs-stdlib (>= 4.18.0, < 9.0.0)
-    puppet-unattended_upgrades (5.1.0)
-      puppetlabs-apt (>= 2.2.0, < 8.0.0)
-      puppetlabs-stdlib (>= 4.13.1, < 7.0.0)
+    puppet-unattended_upgrades (6.0.0)
+      puppetlabs-apt (>= 2.2.0, < 9.0.0)
+      puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
     puppetlabs-apt (7.7.1)
       puppetlabs-stdlib (>= 4.16.0, < 7.0.0)
       puppetlabs-translate (>= 1.0.0, < 3.0.0)
@@ -30,7 +30,7 @@ FORGE
     puppetlabs-lvm (1.4.0)
       puppetlabs-mount_core (>= 1.0.0, < 2.0.0)
       puppetlabs-stdlib (>= 4.13.1, < 7.0.0)
-    puppetlabs-mount_core (1.0.4)
+    puppetlabs-mount_core (1.1.0)
     puppetlabs-ntp (9.1.0)
       puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
     puppetlabs-sshkeys_core (1.0.3)
@@ -47,7 +47,7 @@ FORGE
 GIT
   remote: https://github.com/CoderDojoRotselaar/os-profile.git
   ref: master
-  sha: f60c128ee4ad266bec965807a69ac72e0cbcd858
+  sha: fdd9a355e65dfcdbc25e2f938924020f22289893
   specs:
     coderdojorotselaar-profile (0.1.0)
 
