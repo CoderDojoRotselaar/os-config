@@ -1,15 +1,10 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
-    ghoneycutt-common (1.10.0)
-      puppetlabs-sshkeys_core (>= 1.0.1, < 2.0.0)
-      puppetlabs-stdlib (>= 4.6.0, < 7.0.0)
-    ghoneycutt-ssh (3.62.0)
-      ghoneycutt-common (>= 1.4.1, < 2.0.0)
-      puppetlabs-concat (>= 2.0.0, < 7.0.0)
-      puppetlabs-firewall (>= 1.9.0, < 3.0.0)
-      puppetlabs-sshkeys_core (>= 1.0.1, < 3.0.0)
-      puppetlabs-stdlib (>= 4.6.0, < 7.0.0)
+    ghoneycutt-ssh (4.0.0)
+      puppetlabs-concat (>= 7.0.0, < 8.0.0)
+      puppetlabs-sshkeys_core (>= 2.3.0, < 3.0.0)
+      puppetlabs-stdlib (>= 8.0.0, < 9.0.0)
     kemra102-snapd (1.1.0)
     mmckinst-hash2stuff (1.2.1)
     puppet-archive (6.1.0)
@@ -17,24 +12,17 @@ FORGE
     puppet-unattended_upgrades (7.1.0)
       puppetlabs-apt (>= 2.2.0, < 10.0.0)
       puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
-    puppetlabs-apt (8.5.0)
+    puppetlabs-apt (9.0.0)
       puppetlabs-stdlib (>= 4.16.0, < 9.0.0)
-    puppetlabs-concat (6.4.0)
-      puppetlabs-stdlib (>= 4.13.1, < 7.0.0)
-      puppetlabs-translate (>= 1.0.0, < 3.0.0)
-    puppetlabs-firewall (2.8.1)
-      puppetlabs-stdlib (>= 4.0.0, < 7.0.0)
+    puppetlabs-concat (7.3.0)
+      puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
     puppetlabs-inifile (5.4.0)
       puppetlabs-stdlib (>= 4.13.0, < 9.0.0)
-    puppetlabs-lvm (1.4.0)
-      puppetlabs-mount_core (>= 1.0.0, < 2.0.0)
-      puppetlabs-stdlib (>= 4.13.1, < 7.0.0)
     puppetlabs-mount_core (1.1.0)
     puppetlabs-ntp (9.2.0)
       puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
-    puppetlabs-sshkeys_core (1.0.3)
-    puppetlabs-stdlib (6.6.0)
-    puppetlabs-translate (2.2.0)
+    puppetlabs-sshkeys_core (2.3.0)
+    puppetlabs-stdlib (8.5.0)
     puppetlabs-vcsrepo (5.3.0)
     saz-sudo (7.0.2)
       puppetlabs-stdlib (>= 2.6.0, < 9.0.0)
@@ -52,25 +40,34 @@ GIT
 GIT
   remote: https://github.com/jovandeginste/puppet-syncthing.git
   ref: master
-  sha: 282ed2ca542da0c919c4ce726743fe9c8933629f
+  sha: 242e03afbe793fcbc43ebe6574f3e6b3fe80d711
   specs:
     brwyatt-syncthing (1.1.6)
-      puppetlabs-apt (>= 1.7.0, < 9.0.0)
-      puppetlabs-stdlib (>= 4.5.0, < 9.0.0)
+      puppetlabs-apt (>= 1.7.0, < 10.0.0)
+      puppetlabs-stdlib (>= 4.5.0, < 10.0.0)
+
+GIT
+  remote: https://github.com/puppetlabs/puppetlabs-lvm.git
+  ref: master
+  sha: b39b1b56bd2f3b3cee19436a506f19c6d0670362
+  specs:
+    puppetlabs-lvm (1.4.0)
+      puppetlabs-mount_core (>= 1.0.0, < 2.0.0)
+      puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
 
 DEPENDENCIES
   brwyatt-syncthing (>= 0)
   coderdojorotselaar-profile (>= 0)
-  ghoneycutt-ssh (< 4.0.0)
+  ghoneycutt-ssh (>= 0)
   kemra102-snapd (>= 0)
   mmckinst-hash2stuff (>= 0)
   puppet-archive (>= 0)
   puppet-unattended_upgrades (>= 0)
-  puppetlabs-apt (< 9.0.0)
+  puppetlabs-apt (>= 0)
   puppetlabs-inifile (>= 0)
   puppetlabs-lvm (>= 0)
   puppetlabs-ntp (>= 0)
-  puppetlabs-stdlib (< 7.0.0)
+  puppetlabs-stdlib (>= 0)
   puppetlabs-vcsrepo (>= 0)
   saz-sudo (>= 0)
   saz-timezone (>= 0)
