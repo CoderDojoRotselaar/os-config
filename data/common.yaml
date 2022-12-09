@@ -26,8 +26,6 @@ profile::keyboard::layout: be
 profile::codium::extensions:
   - ms-python.python
   - puppet.puppet-vscode
-  - rebornix.ruby
-  - wingrunr21.vscode-ruby
   - formulahendry.code-runner
 
 profile::ruby::gems:
