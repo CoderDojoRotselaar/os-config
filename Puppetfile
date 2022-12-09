@@ -13,6 +13,7 @@ mod 'saz/timezone'
 mod 'ghoneycutt-ssh'
 mod 'puppet-archive'
 mod 'kemra102-snapd'
+mod 'goldyfruit/grub2'
 
 mod 'brwyatt/syncthing', git: 'https://github.com/jovandeginste/puppet-syncthing.git'
 mod 'coderdojorotselaar/profile', git: 'https://github.com/CoderDojoRotselaar/os-profile.git'
