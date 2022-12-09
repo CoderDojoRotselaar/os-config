@@ -47,7 +47,7 @@ FORGE
 GIT
   remote: https://github.com/CoderDojoRotselaar/os-profile.git
   ref: master
-  sha: fdd9a355e65dfcdbc25e2f938924020f22289893
+  sha: 47e2f557f85574d60003c52c5907f93a434b0a40
   specs:
     coderdojorotselaar-profile (0.1.0)
 
@@ -76,4 +76,3 @@ DEPENDENCIES
   puppetlabs-vcsrepo (>= 0)
   saz-sudo (>= 0)
   saz-timezone (>= 0)
-
