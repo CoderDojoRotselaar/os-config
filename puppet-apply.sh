@@ -15,8 +15,9 @@ function checkNetwork() {
 function updatePuppet() {
   cd "${REPOSITORY_ROOT}"
   set -x
-  git reset --hard HEAD
-  git pull origin master
+  git remote update origin
+  git reset --hard origin/master
+  git restore .
   librarian-puppet install --verbose ||
     librarian-puppet install --verbose --clean
 }
@@ -25,8 +26,9 @@ function updateSecrets() {
   if [[ -d /root/secrets/ ]]; then
     cd /root/secrets/
     set -x
-    git reset --hard HEAD
-    git pull origin master
+    git remote update origin
+    git reset --hard origin/master
+    git restore .
   fi
 }
 
@@ -44,13 +46,13 @@ fi
 cmd="update"
 if [[ -n "${1:-}" ]]; then
   case "$1" in
-  -*)
-    # nothing
-    ;;
-  *)
-    cmd="$1"
-    shift
-    ;;
+    -*)
+      # nothing
+      ;;
+    *)
+      cmd="$1"
+      shift
+      ;;
   esac
 fi
 
