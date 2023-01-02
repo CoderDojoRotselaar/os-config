@@ -16,7 +16,7 @@ FORGE
     puppet-unattended_upgrades (7.1.0)
       puppetlabs-apt (>= 2.2.0, < 10.0.0)
       puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
-    puppetlabs-apt (9.0.0)
+    puppetlabs-apt (9.0.1)
       puppetlabs-stdlib (>= 4.16.0, < 9.0.0)
     puppetlabs-concat (7.3.0)
       puppetlabs-stdlib (>= 4.13.1, < 9.0.0)
@@ -37,7 +37,7 @@ FORGE
 GIT
   remote: https://github.com/CoderDojoRotselaar/os-profile.git
   ref: master
-  sha: 38398c09ab972269d0adaec26330c5dd4b9c03fb
+  sha: 56688551febae919bf0b8a9a65aca2da9ae19f5d
   specs:
     coderdojorotselaar-profile (0.1.0)
 
