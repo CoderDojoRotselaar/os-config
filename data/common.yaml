@@ -40,7 +40,7 @@ ssh::sshd_password_authentication: "no"
 
 profile::hostname::lookup:
   5D0ABCC1-D375-4E77-ADBF-6DBF33F16BC6: cdj-jovdg-1
-  48653158-E1F9-4E69-8877-E08F3CDD107F: cdjvm-jovdg-2
+  B3DA94A5-518B-47CB-8EA5-7843F3E722AF: cdjvm-jovdg-2
 
   D36D0401-4AEE-11CB-986D-C33AF972FDBD: cdj-rots-100
   44454C4C-5A00-1048-8047-B9C04F4D344A: cdj-rots-101
