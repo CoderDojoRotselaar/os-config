@@ -1,6 +1,7 @@
-LIBRARIAN_CMD=docker run --rm -u $(shell id -u):$(shell id -g) -v $(shell pwd):/work librarian-puppet
+# LIBRARIAN_CMD=docker run --rm -u $(shell id -u):$(shell id -g) -v $(shell pwd):/work librarian-puppet
+LIBRARIAN_CMD=librarian-puppet
 
-.PHONY: librarian
+.PHONY: all test clean librarian
 
 install-modules:
 	$(LIBRARIAN_CMD) install --verbose

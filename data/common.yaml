@@ -2,7 +2,6 @@ profile::user::coderdojo_password: "$6$XTj1xyhI$Ku8xdtmejyS0h/1wBIcLt8LBPoV2n7UB
 profile::packages::install:
   - bash
   - curl
-  - gcompris
   - gimp
   - git
   - godot3
